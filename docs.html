@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dropsite - Docs</title>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --card: #111118;
+      --border: #1f2937;
+      --accent: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+      --text: #ffffff;
+      --muted: #6b7280;
+      --radius: 12px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+    }
+    .wrapper { max-width: 900px; margin: 0 auto; padding: 24px; }
+    .logo {
+      font-size: 24px;
+      font-weight: 900;
+      text-decoration: none;
+      color: #fff;
+      display: inline-block;
+      margin-bottom: 32px;
+    }
+    h1 { font-size: 36px; font-weight: 900; margin: 16px 0 8px; }
+    h2 { font-size: 24px; font-weight: 700; margin: 32px 0 16px; }
+    h3 { font-size: 18px; font-weight: 700; margin: 24px 0 8px; }
+    p { color: #d1d5db; margin-bottom: 16px; }
+    .subtitle { color: var(--muted); margin-bottom: 32px; font-size: 18px; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 24px;
+      border-radius: var(--radius);
+      margin-bottom: 16px;
+    }
+    code {
+      background: #1f2937;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 14px;
+    }
+    .steps { list-style: none; counter-reset: step; }
+    .steps li {
+      counter-increment: step;
+      margin-bottom: 16px;
+      padding-left: 36px;
+      position: relative;
+    }
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: var(--accent);
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .tag {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 14px;
+      text-align: center;
+    }
+    .warning {
+      background: #7f1d1d;
+      color: #fca5a5;
+      padding: 12px;
+      border-radius: 8px;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+    .info {
+      background: #1e3a8a;
+      color: #bfdbfe;
+      padding: 12px;
+      border-radius: 8px;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+    }
+    td {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      color: #d1d5db;
+    }
+    td:first-child { font-weight: 600; color: #fff; }
+    .back-link {
+      display: inline-block;
+      color: var(--muted);
+      text-decoration: none;
+      margin-bottom: 16px;
+      font-size: 14px;
+    }
+    .back-link:hover { color: #fff; }
+    footer {
+      text-align: center;
+      padding: 48px 24px 24px;
+      color: var(--muted);
+      font-size: 14px;
+      border-top: 1px solid var(--border);
+      margin-top: 48px;
+    }
+    footer a { color: var(--text); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <a href="index.html" class="back-link">← Back to Dropsite</a>
+    <a href="index.html" class="logo">DROPSITE</a>
+    
+    <h1>Dropsite Documentation</h1>
+    <p class="subtitle">Drop a .zip → Get a live website. No build step, no config.</p>
+
+    <div class="card">
+      <h2>What is Dropsite?</h2>
+      <p>Dropsite hosts static websites instantly. Upload a zip of your HTML/CSS/JS project and get a live URL in seconds. Perfect for portfolios, landing pages, prototypes, and demos.</p>
+    </div>
+
+    <h2>Getting Started: Free vs Premium</h2>
+    <div class="card">
+      <h3>Free Tier - No payment needed</h3>
+      <p>Go to <code>/login.html</code> → Click <strong>"Sign Up Free"</strong> tab → Enter email → Click magic link. That's it.</p>
+      <ul style="list-style: disc; padding-left: 20px; color: #d1d5db;">
+        <li>3 sites per day, 15 per month</li>
+        <li>100MB per zip file</li>
+        <li>Sites stay live for 2 years</li>
+        <li>Basic analytics included</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Premium - One-time payment</h3>
+      <p>For unlimited sites, 500MB zips, custom domains, and password protection:</p>
+      <p>Email <code>nullforgeghost@gmail.com</code> or WhatsApp <code>+7 924 307-91-95</code> to get an access code.</p>
+      <div class="info">After paying, use the <strong>"Log In"</strong> tab with your email. Premium is tied to your email, not a separate account.</div>
+    </div>
+
+    <h2>How to Deploy</h2>
+    <ol class="steps">
+      <li>
+        <strong>Zip your project</strong><br>
+        Make sure <code>index.html</code> is in the root of the zip, not inside another folder. Include all CSS, JS, images.
+      </li>
+      <li>
+        <strong>Log in to Dropsite</strong><br>
+        Go to <code>/login.html</code>. Use <strong>"Sign Up Free"</strong> if you're new, or <strong>"Log In"</strong> if you already have an account. Enter email → Click magic link in inbox.
+      </li>
+      <li>
+        <strong>Drag & drop</strong><br>
+        Drop the .zip file onto the Dropsite dashboard. Max 100MB free, 500MB premium.
+      </li>
+      <li>
+        <strong>Copy your URL</strong><br>
+        Dropsite gives you a live link instantly. Share it anywhere.
+      </li>
+    </ol>
+
+    <h2>Supported Files</h2>
+    <div class="grid">
+      <div class="tag">HTML, CSS, JS</div>
+      <div class="tag">PNG, JPG, SVG, WebP</div>
+      <div class="tag">Fonts: woff, ttf</div>
+      <div class="tag">JSON, TXT, PDF</div>
+      <div class="tag">MP4, MP3</div>
+      <div class="tag">Favicons</div>
+    </div>
+    <div class="warning">Note: No PHP, Python, Node.js, or backend code. Static files only.</div>
+
+    <h2>Login & Account</h2>
+    <div class="card">
+      <p>We use magic links for passwordless login. No passwords to remember.</p>
+      <ul style="list-style: disc; padding-left: 20px; color: #d1d5db;">
+        <li><strong>New user?</strong> Use "Sign Up Free" tab</li>
+        <li><strong>Returning?</strong> Use "Log In" tab</li>
+        <li>Enter email → Check inbox → Click link</li>
+        <li>Didn't get it? Check spam folder first</li>
+        <li>See "Email rate limit exceeded"? Wait 1 hour. Supabase allows 3-4 attempts per hour.</li>
+      </ul>
+    </div>
+
+    <h2>Limits</h2>
+    <table>
+      <tr>
+        <td>Max zip size</td>
+        <td>100 MB free, 500 MB premium</td>
+      </tr>
+      <tr>
+        <td>Sites per account</td>
+        <td>15/month free, Unlimited premium</td>
+      </tr>
+      <tr>
+        <td>Hosting duration</td>
+        <td>2 years free, Forever premium</td>
+      </tr>
+      <tr>
+        <td>Bandwidth</td>
+        <td>100 GB/month</td>
+      </tr>
+      <tr>
+        <td>Custom domains</td>
+        <td>Premium only</td>
+      </tr>
+    </table>
+
+    <h2>Troubleshooting</h2>
+    <div class="card">
+      <h3>"Email rate limit exceeded"</h3>
+      <p>Supabase only allows 3-4 magic links per hour per email. Wait 1 hour and try again. This protects against spam.</p>
+    </div>
+    
+    <div class="card">
+      <h3>Site shows 404</h3>
+      <p>Your zip must have <code>index.html</code> at the root level. If your file is in <code>mysite/index.html</code>, move everything up one level before zipping.</p>
+    </div>
+
+    <div class="card">
+      <h3>Images/CSS not loading</h3>
+      <p>Use relative paths like <code>./style.css</code> or <code>images/logo.png</code> not absolute paths like <code>/style.css</code></p>
+    </div>
+
+    <footer>
+      © 2026 Dropsite. Built by <a href="#">Wild Lirt Studio</a><br>
+      <a href="login.html" style="margin-top: 8px; display: inline-block;">Login</a> · 
+      <a href="index.html">Home</a>
+    </footer>
+  </div>
+</body>
+        </html>

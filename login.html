@@ -240,13 +240,13 @@
     // Redirect if already logged in
     supabase.auth.onAuthStateChange((event, session) => {
       if (event === 'SIGNED_IN' && session) {
-        window.location.href = '/index.html'
+        window.location.href = '/dashboard.html'
       }
     })
 
     const { data: { session } } = await supabase.auth.getSession()
     if (session) {
-      window.location.href = '/index.html'
+      window.location.href = '/dashboard.html'
     }
     
     let mode = 'login'
@@ -281,7 +281,7 @@
       
       const { error } = await supabase.auth.signInWithOtp({
         email: email,
-        options: { emailRedirectTo: window.location.origin + '/index.html' }
+        options: { emailRedirectTo: window.location.origin + '/dashboard.html' }
       })
       
       if (error) {

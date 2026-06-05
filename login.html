@@ -237,6 +237,18 @@
     const supabaseKey = 'sb_publishable_f69tFC-HWTcr87q2Eq4Qiw_smjFVKno'
     const supabase = createClient(supabaseUrl, supabaseKey)
     
+    // Redirect if already logged in
+    supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'SIGNED_IN' && session) {
+        window.location.href = '/index.html'
+      }
+    })
+
+    const { data: { session } } = await supabase.auth.getSession()
+    if (session) {
+      window.location.href = '/index.html'
+    }
+    
     let mode = 'login'
     
     const urlParams = new URLSearchParams(window.location.search)
@@ -269,7 +281,7 @@
       
       const { error } = await supabase.auth.signInWithOtp({
         email: email,
-        options: { emailRedirectTo: window.location.origin + '/dashboard.html' }
+        options: { emailRedirectTo: window.location.origin + '/index.html' }
       })
       
       if (error) {
@@ -289,4 +301,4 @@
     })
   </script>
 </body>
-  </html>
+</html>

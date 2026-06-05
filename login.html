@@ -231,14 +231,12 @@
   <script type="module">
     import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 
-    // Replace with your actual Supabase keys
     const supabaseUrl = 'https://pnewgkczavhqvidhokww.supabase.co'
     const supabaseKey = 'sb_publishable_f69tFC-HWTcr87q2Eq4Qiw_smjFVKno'
     const supabase = createClient(supabaseUrl, supabaseKey)
     
     let mode = 'login'
     
-    // Check URL for ?mode=signup
     const urlParams = new URLSearchParams(window.location.search)
     if (urlParams.get('mode') === 'signup') setMode('signup')
     
@@ -255,7 +253,7 @@
     
     document.getElementById('login-tab').onclick = () => setMode('login')
     document.getElementById('signup-tab').onclick = () => setMode('signup')
-    window.setMode = setMode // Make available for tier button
+    window.setMode = setMode
 
     document.getElementById('auth-form').addEventListener('submit', async (e) => {
       e.preventDefault()
@@ -273,10 +271,14 @@
       })
       
       if (error) {
-        msg.textContent = error.message
+        if (error.message.includes('rate limit') || error.message.includes('email rate limit exceeded')) {
+          msg.textContent = 'Email rate limit exceeded. Please wait 1 hour and try again.'
+        } else {
+          msg.textContent = error.message
+        }
         msg.className = 'show error'
       } else {
-        msg.textContent = 'Check your email for the magic link!'
+        msg.textContent = 'Magic link sent! Go to your email and click the link to log in.'
         msg.className = 'show success'
         document.getElementById('email').value = ''
       }
@@ -285,4 +287,4 @@
     })
   </script>
 </body>
-</html>
+  </html>

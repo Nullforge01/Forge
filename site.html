@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Loading...</title>
+</head>
+<body>
+    <div id="content">Loading site...</div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const SUPABASE_URL = 'https://pnewgkczavhqvidhokww.supabase.co'
+        const SUPABASE_ANON_KEY = 'sb_publishable_f69tFC-HWTcr87q2Eq4Qiw_smjFVKno'
+        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+        
+        async function loadSite() {
+            const path = window.location.pathname.split('/').filter(Boolean)
+            const username = path[0]
+            const slug = path[1]
+            
+            if (!username ||!slug) {
+                document.body.innerHTML = '<h1>404 - Site not found</h1>'
+                return
+            }
+            
+            const { data, error } = await supabase
+               .from('sites')
+               .select('html_content, title')
+               .eq('username', username)
+               .eq('slug', slug)
+               .single()
+            
+            if (error ||!data) {
+                document.body.innerHTML = '<h1>404 - Site not found</h1>'
+                return
+            }
+            
+            document.title = data.title || `${username}/${slug}`
+            document.open()
+            document.write(data.html_content)
+            document.close()
+        }
+        
+        loadSite()
+    </script>
+</body>
+</html>

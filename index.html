@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dropsite - Drop a .zip → Get a live website</title>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --card: #111118;
+      --border: #1f2937;
+      --accent: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+      --text: #ffffff;
+      --muted: #6b7280;
+      --radius: 16px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 5%;
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: 900;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .nav-right { display: flex; gap: 12px; }
+    .btn-primary, .btn-secondary {
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 14px;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+      text-align: center;
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-secondary {
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover { background: #1a1a22; }
+    .btn-large { padding: 16px 32px; font-size: 16px; }
+    .full { width: 100%; }
+    .hero {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 5%;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 900;
+      margin-bottom: 16px;
+      background: var(--accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle {
+      font-size: 20px;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+    .pricing {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 80px;
+      text-align: left;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      transition: transform 0.2s;
+    }
+    .card:hover { transform: translateY(-4px); }
+    .card.highlight { border: 1px solid #6366f1; }
+    .card h3 { font-size: 24px; margin-bottom: 8px; }
+    .price { font-size: 36px; font-weight: 900; margin-bottom: 24px; }
+    .card ul {
+      list-style: none;
+      margin-bottom: 32px;
+      color: var(--muted);
+    }
+    .card ul li {
+      margin-bottom: 12px;
+      padding-left: 24px;
+      position: relative;
+    }
+    .card ul li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #10b981;
+    }
+    .features {
+      max-width: 1200px;
+      margin: 120px auto;
+      padding: 0 5%;
+    }
+    .features h2 {
+      text-align: center;
+      font-size: 36px;
+      font-weight: 900;
+      margin-bottom: 48px;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+    }
+    .feature {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .feature h4 { font-size: 18px; margin-bottom: 8px; }
+    .feature p { color: var(--muted); font-size: 14px; }
+    footer {
+      text-align: center;
+      padding: 32px;
+      color: var(--muted);
+      font-size: 14px;
+      border-top: 1px solid var(--border);
+      margin-top: 80px;
+    }
+    footer a { color: var(--text); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    @media (max-width: 768px) {
+      .nav { padding: 16px 5%; }
+      .hero { margin: 40px auto; }
+      .features { margin: 60px auto; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <a href="index.html" class="logo">DROPSITE</a>
+    <div class="nav-right">
+      <a href="login.html" class="btn-secondary">Log In</a>
+      <a href="login.html?mode=signup" class="btn-primary">Start Free</a>
+    </div>
+  </header>
+
+  <main class="hero">
+    <h1>Drop a .zip → Get a live website</h1>
+    <p class="subtitle">No build step. No credit card. Host static sites in seconds.</p>
+    <a href="login.html?mode=signup" class="btn-primary btn-large">Deploy your first site →</a>
+    
+    <div class="pricing">
+      <div class="card">
+        <h3>Free</h3>
+        <p class="price">$0</p>
+        <ul>
+          <li>3 sites/day, 15/month</li>
+          <li>100MB per zip</li>
+          <li>2 year hosting</li>
+          <li>dropsite.app/site/username/name</li>
+          <li>Basic analytics</li>
+        </ul>
+        <a href="login.html?mode=signup" class="btn-secondary full">Start Free</a>
+      </div>
+      
+      <div class="card highlight">
+        <h3>Premium</h3>
+        <p class="price">One-time</p>
+        <ul>
+          <li>Unlimited uploads + sites</li>
+          <li>500MB per zip</li>
+          <li>Custom domains</li>
+          <li>Advanced analytics</li>
+          <li>Password protect sites</li>
+          <li>Online editor + Form handling</li>
+          <li>Priority support</li>
+          <li>No Dropsite footer</li>
+        </ul>
+        <a href="mailto:nullforgeghost@gmail.com?subject=Premium%20Dropsite%20Access" class="btn-primary full">
+          Contact for Code →
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <section class="features">
+    <h2>Everything you need</h2>
+    <div class="features-grid">
+      <div class="feature">
+        <h4>Instant Deploy</h4>
+        <p>Upload a zip and your site is live in seconds. No CI/CD config needed.</p>
+      </div>
+      <div class="feature">
+        <h4>Version Control</h4>
+        <p>Every upload is versioned. Rollback to any previous deploy in 1 click.</p>
+      </div>
+      <div class="feature">
+        <h4>Form Handling</h4>
+        <p>&lt;form action="/api/submit"&gt; works out of box. Get emails instantly.</p>
+      </div>
+      <div class="feature">
+        <h4>Preview URLs</h4>
+        <p>Test changes on pr-1--mysite.dropsite.app before going live.</p>
+      </div>
+      <div class="feature">
+        <h4>Online Editor</h4>
+        <p>Tweak HTML/CSS after upload with Monaco editor. Premium only.</p>
+      </div>
+      <div class="feature">
+        <h4>Team Seats</h4>
+        <p>Invite 3 friends to manage sites with you. Premium only.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+  © 2026 Dropsite. Built by <a href="#">Wild Lirt Studio</a> · 
+  <a href="terms.html">Terms</a> · 
+  <a href="privacy.html">Privacy</a>
+</footer>
+</body>
+</html>

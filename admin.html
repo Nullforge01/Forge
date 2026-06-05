@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dropsite - Admin</title>
+  <style>
+    :root{--bg:#0a0a0f;--card:#111118;--border:#1f2937;--accent:linear-gradient(135deg,#6366f1 0%,#a855f7 100%);--text:#fff;--muted:#6b7280;--radius:12px}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px}
+   .login-card,.admin-panel{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;width:100%;max-width:500px}
+   .admin-panel{max-width:900px;display:none}
+    h1{font-size:28px;font-weight:900;margin-bottom:8px;text-align:center}
+   .subtitle{color:var(--muted);text-align:center;margin-bottom:32px}
+   .form-group{margin-bottom:20px}
+   label{display:block;font-size:14px;font-weight:600;margin-bottom:8px;color:var(--muted)}
+    input,select{width:100%;background:var(--bg);border:1px solid var(--border);padding:12px;border-radius:8px;color:#fff;font-size:16px}
+   .btn{background:var(--accent);color:#fff;padding:12px 24px;border:none;border-radius:8px;font-weight:700;cursor:pointer;width:100%}
+   .btn:disabled{opacity:.5;cursor:not-allowed}
+   .btn-secondary{background:#1a1a22;border:1px solid var(--border)}
+    #login-msg{margin-top:16px;font-size:14px;text-align:center;display:none}
+   .success{color:#86efac}.error{color:#fca5a5}
+   .header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+   .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+   .card-small{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px}
+   .card-small h3{font-size:14px;color:var(--muted);margin-bottom:4px}
+   .card-small .value{font-size:24px;font-weight:900}
+    table{width:100%;border-collapse:collapse;margin-top:16px}
+    th,td{padding:12px;text-align:left;border-bottom:1px solid var(--border);font-size:14px}
+    th{color:var(--muted);font-weight:600}
+   .badge{font-size:11px;padding:2px 8px;border-radius:4px;background:var(--border);color:var(--muted)}
+   .badge.active{background:var(--accent);color:#fff}
+   .code{font-family:monospace;background:#1a1a22;padding:2px 6px;border-radius:4px}
+    @media (max-width:768px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="login-card" id="login-card">
+    <h1>DROPSITE ADMIN</h1>
+    <p class="subtitle">Authorized access only</p>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" id="admin-email" placeholder="tavongatoma100@gmail.com">
+    </div>
+    <div class="form-group">
+      <label>Passkey</label>
+      <input type="password" id="admin-passkey" placeholder="Enter passkey">
+    </div>
+    <button class="btn" onclick="adminLogin()">Access Dashboard</button>
+    <p id="login-msg"></p>
+  </div>
+
+  <div class="admin-panel" id="admin-panel">
+    <div class="header">
+      <h1>Admin Dashboard</h1>
+      <button class="btn btn-secondary" style="width:auto" onclick="logout()">Logout</button>
+    </div>
+    
+    <div class="grid">
+      <div class="card-small">
+        <h3>Total Codes</h3>
+        <div class="value" id="total-codes">0</div>
+      </div>
+      <div class="card-small">
+        <h3>Redeemed</h3>
+        <div class="value" id="redeemed-codes">0</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Generate New Promo Code</label>
+      <div style="display:flex;gap:12px">
+        <input type="text" id="new-code" placeholder="DROPSITE-2026-XXXX" style="text-transform:uppercase">
+        <select id="code-days" style="max-width:140px">
+          <option value="30">30 days</option>
+          <option value="90" selected>90 days</option>
+          <option value="365">1 year</option>
+          <option value="36500">Lifetime</option>
+        </select>
+        <button class="btn" style="width:auto" onclick="generateCode()">Create</button>
+      </div>
+    </div>
+
+    <h3 style="margin:24px 0 12px">All Promo Codes</h3>
+    <table>
+      <thead>
+        <tr><th>Code</th><th>Duration</th><th>Status</th><th>Redeemed By</th><th>Action</th></tr>
+      </thead>
+      <tbody id="codes-table"></tbody>
+    </table>
+  </div>
+
+  <script type="module">
+    import{createClient}from'https://esm.sh/@supabase/supabase-js@2'
+    const sb=createClient('https://https://pnewgkczavhqvidhokww.supabase.co,'sb_publishable_f69tFC-HWTcr87q2Eq4Qiw_smjFVKno')
+    let $=s=>document.getElementById(s)
+    
+    window.adminLogin=()=>{
+      const e=$('admin-email').value.trim(),p=$('admin-passkey').value,m=$('login-msg')
+      if(e==='tavongatoma100@gmail.com'&&p==='01nullforgeghost01'){
+        localStorage.setItem('dropsite_admin','true')
+        $('login-card').style.display='none'
+        $('admin-panel').style.display='block'
+        loadCodes()
+      }else{
+        m.textContent='Invalid credentials',m.className='error',m.style.display='block'
+      }
+    }
+    
+    window.logout=()=>{
+      localStorage.removeItem('dropsite_admin')
+      location.reload()
+    }
+    
+    const loadCodes=async()=>{
+      const{data}=await sb.from('promo_codes').select('*,users(email)').order('created_at',{ascending:false})
+      $('total-codes').textContent=data?.length||0
+      $('redeemed-codes').textContent=data?.filter(c=>c.redeemed_by).length||0
+      $('codes-table').innerHTML=data?.map(c=>`
+        <tr>
+          <td><span class="code">${c.code}</span></td>
+          <td>${c.duration_days} days</td>
+          <td><span class="badge ${c.redeemed_by?'active':''}">${c.redeemed_by?'Used':'Active'}</span></td>
+          <td>${c.users?.email||'-'}</td>
+          <td>${!c.redeemed_by?`<button onclick="deleteCode('${c.code}')" style="background:#7f1d1d;border:none;color:#fff;padding:4px 12px;border-radius:4px;cursor:pointer;font-size:12px">Delete</button>`:'-'}</td>
+        </tr>
+      `).join('')||'<tr><td colspan="5" style="text-align:center;color:var(--muted)">No codes yet</td></tr>'
+    }
+    
+    window.generateCode=async()=>{
+      const c=$('new-code').value.trim().toUpperCase(),d=$('code-days').value
+      if(!c)return alert('Enter a code')
+      const{error}=await sb.from('promo_codes').insert({code:c,duration_days:d})
+      if(error)return alert('Code exists or error: '+error.message)
+      $('new-code').value=''
+      loadCodes()
+    }
+    
+    window.deleteCode=async(code)=>{
+      if(!confirm('Delete '+code+'?'))return
+      await sb.from('promo_codes').delete().eq('code',code)
+      loadCodes()
+    }
+    
+    if(localStorage.getItem('dropsite_admin')==='true'){
+      $('login-card').style.display='none'
+      $('admin-panel').style.display='block'
+      loadCodes()
+    }
+  </script>
+</body>
+</html>

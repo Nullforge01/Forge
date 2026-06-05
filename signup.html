@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up - Dropsite</title>
+</head>
+<body>
+    <h1>Sign Up</h1>
+    <input id="email" type="email" placeholder="Email">
+    <input id="password" type="password" placeholder="Password">
+    <button onclick="signUp()">Create Account</button>
+    <p>Already have an account? <a href="/login">Login</a></p>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const SUPABASE_URL = 'https://pnewgkczavhqvidhokww.supabase.co'
+        const SUPABASE_ANON_KEY = 'sb_publishable_f69tFC-HWTcr87q2Eq4Qiw_smjFVKno'
+        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+        
+        async function signUp() {
+            const email = document.getElementById('email').value
+            const password = document.getElementById('password').value
+            const { error } = await supabase.auth.signUp({ email, password })
+            if (error) alert(error.message)
+            else {
+                alert('Check your email to confirm')
+                window.location.href = '/login'
+            }
+        }
+    </script>
+</body>
+</html>

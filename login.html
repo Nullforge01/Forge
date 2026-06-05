@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dropsite - Login</title>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --card: #111118;
+      --border: #1f2937;
+      --accent: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+      --text: #ffffff;
+      --muted: #6b7280;
+      --radius: 12px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .container {
+      max-width: 1100px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    @media (min-width: 768px) {
+      .container { grid-template-columns: 1fr 1fr; }
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: 900;
+      text-decoration: none;
+      color: #fff;
+      display: inline-block;
+      margin-bottom: 32px;
+    }
+    h1 { font-size: 36px; font-weight: 900; margin: 24px 0 8px; }
+    .subtitle { color: var(--muted); margin-bottom: 24px; }
+    .tabs {
+      display: flex;
+      background: var(--card);
+      padding: 4px;
+      border-radius: 8px;
+      margin-bottom: 24px;
+      border: 1px solid var(--border);
+    }
+    .tab {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tab.active { background: #fff; color: #000; }
+    input {
+      width: 100%;
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 16px;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+    input:focus { outline: none; border-color: #6366f1; }
+    button[type="submit"] {
+      width: 100%;
+      background: var(--accent);
+      color: #fff;
+      padding: 16px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    button[type="submit"]:hover { opacity: 0.9; }
+    button[type="submit"]:disabled { opacity: 0.5; cursor: not-allowed; }
+    .back-link { margin-top: 24px; text-align: center; font-size: 14px; }
+    .back-link a { color: var(--muted); text-decoration: none; }
+    .back-link a:hover { color: #fff; }
+    .tiers h2 { font-size: 24px; font-weight: 700; margin-bottom: 24px; }
+    .tier {
+      border: 1px solid var(--border);
+      padding: 24px;
+      border-radius: var(--radius);
+      margin-bottom: 16px;
+      transition: all 0.2s;
+    }
+    .tier.highlight { border-color: #6366f1; background: var(--card); }
+    .tier-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 12px;
+    }
+    .tier h3 { font-size: 20px; font-weight: 700; }
+    .price { color: var(--muted); }
+    .price.white { color: #fff; }
+    .tier ul {
+      list-style: none;
+      color: var(--muted);
+      font-size: 14px;
+      margin: 16px 0;
+    }
+    .tier ul li { margin-bottom: 8px; }
+    .tier-btn {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: #fff;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+      text-align: center;
+      transition: background 0.2s;
+    }
+    .tier-btn:hover { background: #1a1a22; }
+    .tier-btn.white { background: #fff; color: #000; border: none; }
+    .tier-btn.white:hover { background: #e5e7eb; }
+    #message {
+      margin-top: 16px;
+      font-size: 14px;
+      display: none;
+      padding: 12px;
+      border-radius: 8px;
+    }
+    #message.show { display: block; }
+    .error { background: #7f1d1d; color: #fca5a5; }
+    .success { background: #14532d; color: #86efac; }
+    .note { font-size: 12px; color: var(--muted); text-align: center; margin-top: 16px; }
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: var(--muted);
+      font-size: 14px;
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--text); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="container">
+      <div>
+        <a href="index.html" class="logo">DROPSITE</a>
+        <h1 id="form-title">Admin Login</h1>
+        <p id="form-subtitle" class="subtitle">Access your dashboard</p>
+
+        <div class="tabs">
+          <button id="login-tab" class="tab active">Log In</button>
+          <button id="signup-tab" class="tab">Sign Up Free</button>
+        </div>
+
+        <form id="auth-form">
+          <input id="email" type="email" placeholder="Email" required />
+          <button type="submit" id="submit-btn">Send Magic Link</button>
+        </form>
+
+        <p id="message"></p>
+        <div class="back-link"><a href="index.html">← Back to site</a></div>
+      </div>
+
+      <div class="tiers">
+        <h2>Choose your tier</h2>
+        
+        <div id="free-tier" class="tier">
+          <div class="tier-header">
+            <h3>Free Tier</h3>
+            <span class="price">$0</span>
+          </div>
+          <ul>
+            <li>• 3 sites/day, 15/month</li>
+            <li>• 100MB per zip</li>
+            <li>• 2 year hosting</li>
+            <li>• Basic analytics</li>
+          </ul>
+          <button class="tier-btn" onclick="setMode('signup')">Start Free →</button>
+        </div>
+
+        <div class="tier highlight">
+          <div class="tier-header">
+            <h3>Premium</h3>
+            <span class="price white">One-time</span>
+          </div>
+          <ul>
+            <li>• Unlimited uploads + sites</li>
+            <li>• 500MB per zip</li>
+            <li>• Custom domains</li>
+            <li>• Advanced analytics + Password protect</li>
+            <li>• Online editor + Form handling</li>
+            <li>• Priority support</li>
+          </ul>
+          <a href="mailto:nullforgeghost@gmail.com?subject=Premium%20Dropsite%20Code" class="tier-btn white">
+            Contact for Code →
+          </a>
+        </div>
+
+        <p class="note">Email nullforgeghost@gmail.com or WhatsApp +7 924 307-91-95 for premium</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 Dropsite. Built by <a href="#">Wild Lirt Studio</a>
+  </footer>
+
+  <script type="module">
+    import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+
+    // Replace with your actual Supabase keys
+    const supabaseUrl = 'https://pnewgkczavhqvidhokww.supabase.co'
+    const supabaseKey = 'sb_publishable_f69tFC-HWTcr87q2Eq4Qiw_smjFVKno'
+    const supabase = createClient(supabaseUrl, supabaseKey)
+    
+    let mode = 'login'
+    
+    // Check URL for ?mode=signup
+    const urlParams = new URLSearchParams(window.location.search)
+    if (urlParams.get('mode') === 'signup') setMode('signup')
+    
+    function setMode(newMode) {
+      mode = newMode
+      document.getElementById('login-tab').classList.toggle('active', mode === 'login')
+      document.getElementById('signup-tab').classList.toggle('active', mode === 'signup')
+      document.getElementById('form-title').textContent = mode === 'login' ? 'Admin Login' : 'Start Free'
+      document.getElementById('form-subtitle').textContent = mode === 'login' ? 'Access your dashboard' : 'Create your free account'
+      document.getElementById('submit-btn').textContent = mode === 'login' ? 'Send Magic Link' : 'Create Free Account'
+      document.getElementById('free-tier').classList.toggle('highlight', mode === 'signup')
+      document.getElementById('message').classList.remove('show')
+    }
+    
+    document.getElementById('login-tab').onclick = () => setMode('login')
+    document.getElementById('signup-tab').onclick = () => setMode('signup')
+    window.setMode = setMode // Make available for tier button
+
+    document.getElementById('auth-form').addEventListener('submit', async (e) => {
+      e.preventDefault()
+      const email = document.getElementById('email').value
+      const btn = document.getElementById('submit-btn')
+      const msg = document.getElementById('message')
+      
+      btn.disabled = true
+      btn.textContent = 'Sending...'
+      msg.classList.remove('show')
+      
+      const { error } = await supabase.auth.signInWithOtp({
+        email: email,
+        options: { emailRedirectTo: window.location.origin + '/dashboard.html' }
+      })
+      
+      if (error) {
+        msg.textContent = error.message
+        msg.className = 'show error'
+      } else {
+        msg.textContent = 'Check your email for the magic link!'
+        msg.className = 'show success'
+        document.getElementById('email').value = ''
+      }
+      btn.disabled = false
+      btn.textContent = mode === 'login' ? 'Send Magic Link' : 'Create Free Account'
+    })
+  </script>
+</body>
+</html>

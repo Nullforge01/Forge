@@ -34,7 +34,8 @@
       text-decoration: none;
       color: var(--text);
     }
-    .nav-right { display: flex; gap: 12px; }
+    .nav-right { display: flex; gap: 12px; align-items: center; }
+    .user-email { color: var(--muted); font-size: 14px; }
     .btn-primary, .btn-secondary {
       padding: 10px 20px;
       border-radius: 8px;
@@ -144,10 +145,12 @@
     }
     footer a { color: var(--text); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
+    .hidden { display: none !important; }
     @media (max-width: 768px) {
       .nav { padding: 16px 5%; }
       .hero { margin: 40px auto; }
       .features { margin: 60px auto; }
+      .user-email { display: none; }
     }
   </style>
 </head>
@@ -155,15 +158,23 @@
   <header class="nav">
     <a href="index.html" class="logo">DROPSITE</a>
     <div class="nav-right">
-      <a href="login.html" class="btn-secondary">Log In</a>
-      <a href="login.html?mode=signup" class="btn-primary">Start Free</a>
+      <!-- Logged out state -->
+      <div id="logged-out-nav">
+        <a href="login.html" class="btn-secondary">Log In</a>
+        <a href="login.html?mode=signup" class="btn-primary">Start Free</a>
+      </div>
+      <!-- Logged in state -->
+      <div id="logged-in-nav" class="hidden">
+        <span id="user-email" class="user-email"></span>
+        <button id="logout-btn" class="btn-secondary">Logout</button>
+      </div>
     </div>
   </header>
 
   <main class="hero">
     <h1>Drop a .zip → Get a live website</h1>
     <p class="subtitle">No build step. No credit card. Host static sites in seconds.</p>
-    <a href="login.html?mode=signup" class="btn-primary btn-large">Deploy your first site →</a>
+    <a href="login.html?mode=signup" class="btn-primary btn-large" id="cta-btn">Deploy your first site →</a>
     
     <div class="pricing">
       <div class="card">
@@ -236,5 +247,44 @@
   <a href="/terms.html" style="color: #6b7280; text-decoration: none;">Terms</a> · 
   <a href="/privacy.html" style="color: #6b7280; text-decoration: none;">Privacy</a>
 </footer>
+
+<script type="module">
+  import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+  
+  const supabase = createClient('https://pnewgkczavhqvidhokww.supabase.co', 'sb_publishable_f69tFC-HWTcr87q2Eq4Qiw_smjFVKno')
+  
+  const loggedOutNav = document.getElementById('logged-out-nav')
+  const loggedInNav = document.getElementById('logged-in-nav')
+  const userEmailEl = document.getElementById('user-email')
+  const logoutBtn = document.getElementById('logout-btn')
+  const ctaBtn = document.getElementById('cta-btn')
+  
+  // Check auth state on load
+  const { data: { session } } = await supabase.auth.getSession()
+  updateUI(session)
+  
+  // Listen for auth changes
+  supabase.auth.onAuthStateChange((event, session) => {
+    updateUI(session)
+  })
+  
+  function updateUI(session) {
+    if (session) {
+      loggedOutNav.classList.add('hidden')
+      loggedInNav.classList.remove('hidden')
+      userEmailEl.textContent = session.user.email
+      ctaBtn.textContent = 'Go to Dashboard →'
+      ctaBtn.href = '/dashboard.html'
+    } else {
+      loggedOutNav.classList.remove('hidden')
+      loggedInNav.classList.add('hidden')
+    }
+  }
+  
+  logoutBtn.addEventListener('click', async () => {
+    await supabase.auth.signOut()
+    window.location.href = '/index.html'
+  })
+</script>
 </body>
-</html>
+  </html>

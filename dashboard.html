@@ -8,61 +8,61 @@
     :root{--bg:#0a0a0f;--card:#111118;--border:#1f2937;--accent:linear-gradient(135deg,#6366f1 0%,#a855f7 100%);--text:#fff;--muted:#6b7280;--radius:12px;--sidebar-w:260px}
     *{margin:0;padding:0;box-sizing:border-box}
     body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;display:flex;min-height:100vh}
-   .sidebar{width:var(--sidebar-w);background:var(--card);border-right:1px solid var(--border);padding:24px;display:flex;flex-direction:column;position:fixed;height:100vh;overflow-y:auto;z-index:100}
-   .logo{font-size:24px;font-weight:900;text-decoration:none;color:#fff;margin-bottom:32px;display:block}
-   .plan-badge{background:var(--border);color:var(--muted);font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;margin-left:8px}
-   .plan-badge.pro{background:var(--accent);color:#fff}
-   .nav-menu{flex:1}
-   .nav-item{display:flex;align-items:center;gap:12px;padding:12px;border-radius:8px;color:var(--muted);font-weight:600;font-size:14px;margin-bottom:4px;transition:.2s;cursor:pointer;border:none;background:0 0;width:100%;text-align:left}
-   .nav-item:hover,.nav-item.active{background:#1a1a22;color:#fff}
-   .nav-item svg{width:20px;height:20px}
-   .nav-item.locked{opacity:.5}
-   .nav-item.locked:hover::after{content:"PRO";margin-left:auto;font-size:10px;background:var(--accent);padding:2px 6px;border-radius:4px}
-   .sidebar-footer{border-top:1px solid var(--border);padding-top:16px}
-   .upgrade-btn{width:100%;background:var(--accent);color:#fff;padding:12px;border:none;border-radius:8px;font-weight:700;cursor:pointer;text-decoration:none;display:block;text-align:center;margin-bottom:12px}
-   .user-info{display:flex;align-items:center;gap:12px;padding:12px;border-radius:8px;cursor:pointer}
-   .user-info:hover{background:#1a1a22}
-   .avatar{width:32px;height:32px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
-   .user-email{font-size:14px;color:var(--muted);overflow:hidden;text-overflow:ellipsis}
-   .main{margin-left:var(--sidebar-w);flex:1;padding:32px}
-   .header{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px}
+  .sidebar{width:var(--sidebar-w);background:var(--card);border-right:1px solid var(--border);padding:24px;display:flex;flex-direction:column;position:fixed;height:100vh;overflow-y:auto;z-index:100}
+  .logo{font-size:24px;font-weight:900;text-decoration:none;color:#fff;margin-bottom:32px;display:block}
+  .plan-badge{background:var(--border);color:var(--muted);font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;margin-left:8px}
+  .plan-badge.pro{background:var(--accent);color:#fff}
+  .nav-menu{flex:1}
+  .nav-item{display:flex;align-items:center;gap:12px;padding:12px;border-radius:8px;color:var(--muted);font-weight:600;font-size:14px;margin-bottom:4px;transition:.2s;cursor:pointer;border:none;background:0 0;width:100%;text-align:left}
+  .nav-item:hover,.nav-item.active{background:#1a1a22;color:#fff}
+  .nav-item svg{width:20px;height:20px}
+  .nav-item.locked{opacity:.5}
+  .nav-item.locked:hover::after{content:"PRO";margin-left:auto;font-size:10px;background:var(--accent);padding:2px 6px;border-radius:4px}
+  .sidebar-footer{border-top:1px solid var(--border);padding-top:16px}
+  .upgrade-btn{width:100%;background:var(--accent);color:#fff;padding:12px;border:none;border-radius:8px;font-weight:700;cursor:pointer;text-decoration:none;display:block;text-align:center;margin-bottom:12px}
+  .user-info{display:flex;align-items:center;gap:12px;padding:12px;border-radius:8px;cursor:pointer}
+  .user-info:hover{background:#1a1a22}
+  .avatar{width:32px;height:32px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+  .user-email{font-size:14px;color:var(--muted);overflow:hidden;text-overflow:ellipsis}
+  .main{margin-left:var(--sidebar-w);flex:1;padding:32px}
+  .header{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px}
     h1{font-size:32px;font-weight:900}
-   .btn-primary{background:var(--accent);color:#fff;padding:12px 24px;border:none;border-radius:8px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
-   .btn-primary:hover{opacity:.9}
-   .btn-primary:disabled{opacity:.5;cursor:not-allowed}
-   .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-bottom:32px}
-   .stat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
-   .stat-label{color:var(--muted);font-size:14px;margin-bottom:8px}
-   .stat-value{font-size:28px;font-weight:900}
-   .stat-sub{color:var(--muted);font-size:12px;margin-top:4px}
-   .progress-bar{width:100%;height:8px;background:var(--border);border-radius:4px;margin-top:12px;overflow:hidden}
-   .progress-fill{height:100%;background:var(--accent);transition:width.3s}
-   .section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-   .section-title{font-size:20px;font-weight:700}
-   .sites-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
-   .site-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;transition:transform.2s}
-   .site-card:hover{transform:translateY(-2px);border-color:#374151}
-   .site-name{font-weight:700;font-size:16px;margin-bottom:4px}
-   .site-url{color:var(--muted);font-size:13px;text-decoration:none;word-break:break-all}
-   .site-url:hover{color:#fff}
-   .site-stats{display:flex;gap:16px;margin:16px 0;font-size:13px;color:var(--muted)}
-   .site-actions{display:flex;gap:8px}
-   .btn-small{flex:1;padding:8px;border:1px solid var(--border);background:0 0;color:var(--text);border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;text-align:center}
-   .btn-small:hover{background:#1a1a22}
-   .empty{text-align:center;padding:60px 20px;color:var(--muted)}
-   .empty h3{font-size:20px;margin-bottom:8px;color:#fff}
-   .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);align-items:center;justify-content:center;z-index:1000}
-   .modal.show{display:flex}
-   .modal-content{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;max-width:500px;width:90%}
-   .modal h3{font-size:24px;margin-bottom:16px}
-   .drop-zone{border:2px dashed var(--border);border-radius:8px;padding:40px;text-align:center;cursor:pointer;margin-bottom:16px}
-   .drop-zone:hover{border-color:#6366f1}
-   .drop-zone.dragover{border-color:#6366f1;background:#1a1a22}
-    input[type=file]{display:none}
+  .btn-primary{background:var(--accent);color:#fff;padding:12px 24px;border:none;border-radius:8px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+  .btn-primary:hover{opacity:.9}
+  .btn-primary:disabled{opacity:.5;cursor:not-allowed}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-bottom:32px}
+  .stat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
+  .stat-label{color:var(--muted);font-size:14px;margin-bottom:8px}
+  .stat-value{font-size:28px;font-weight:900}
+  .stat-sub{color:var(--muted);font-size:12px;margin-top:4px}
+  .progress-bar{width:100%;height:8px;background:var(--border);border-radius:4px;margin-top:12px;overflow:hidden}
+  .progress-fill{height:100%;background:var(--accent);transition:width.3s}
+  .section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+  .section-title{font-size:20px;font-weight:700}
+  .sites-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+  .site-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;transition:transform.2s}
+  .site-card:hover{transform:translateY(-2px);border-color:#374151}
+  .site-name{font-weight:700;font-size:16px;margin-bottom:4px}
+  .site-url{color:var(--muted);font-size:13px;text-decoration:none;word-break:break-all}
+  .site-url:hover{color:#fff}
+  .site-stats{display:flex;gap:16px;margin:16px 0;font-size:13px;color:var(--muted)}
+  .site-actions{display:flex;gap:8px}
+  .btn-small{flex:1;padding:8px;border:1px solid var(--border);background:0 0;color:var(--text);border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;text-align:center}
+  .btn-small:hover{background:#1a1a22}
+  .empty{text-align:center;padding:60px 20px;color:var(--muted)}
+  .empty h3{font-size:20px;margin-bottom:8px;color:#fff}
+  .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);align-items:center;justify-content:center;z-index:1000}
+  .modal.show{display:flex}
+  .modal-content{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;max-width:500px;width:90%}
+  .modal h3{font-size:24px;margin-bottom:16px}
+  .drop-zone{border:2px dashed var(--border);border-radius:8px;padding:40px;text-align:center;cursor:pointer;margin-bottom:16px;display:block}
+  .drop-zone:hover{border-color:#6366f1}
+  .drop-zone.dragover{border-color:#6366f1;background:#1a1a22}
+   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
     input[type=text]{width:100%;background:var(--bg);border:1px solid var(--border);padding:12px;border-radius:8px;color:#fff;margin-bottom:16px}
-   .modal-actions{display:flex;gap:12px}
-   .btn-secondary{flex:1;padding:12px;border:1px solid var(--border);background:0 0;color:#fff;border-radius:8px;font-weight:700;cursor:pointer}
-   .menu-btn{display:none}
+  .modal-actions{display:flex;gap:12px}
+  .btn-secondary{flex:1;padding:12px;border:1px solid var(--border);background:0 0;color:#fff;border-radius:8px;font-weight:700;cursor:pointer}
+  .menu-btn{display:none}
     footer{margin-left:var(--sidebar-w);text-align:center;padding:24px;color:var(--muted);font-size:14px;border-top:1px solid var(--border)}
     footer a{color:var(--text);text-decoration:none}
     @media (max-width:768px){.sidebar{transform:translateX(-100%);transition:transform.3s}.sidebar.open{transform:translateX(0)}.main{margin-left:0;padding:16px}.header{flex-direction:column;align-items:start;gap:16px}.menu-btn{display:block;position:fixed;top:16px;left:16px;z-index:101;background:var(--card);border:1px solid var(--border);padding:8px;border-radius:8px;cursor:pointer;color:#fff}footer{margin-left:0}}
@@ -77,7 +77,7 @@
       <button class="nav-item" onclick="openUploadModal()"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>New Site</button>
       <button class="nav-item" onclick="alert('My Sites coming soon')"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>My Sites</button>
       <button class="nav-item locked" id="analytics-btn" onclick="checkPremium('analytics')"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>Analytics</button>
-      <button class="nav-item" onclick="location='settings.html'"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>Settings</button>
+      <button class="nav-item" onclick="location='settings.html'"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>Settings</button>
     </nav>
     <div class="sidebar-footer">
       <a href="settings.html" class="upgrade-btn" id="upgrade-btn">💎 Upgrade to Pro</a>
@@ -105,11 +105,11 @@
   <div class="modal" id="upload-modal">
     <div class="modal-content">
       <h3>Deploy new site</h3>
-      <div class="drop-zone" id="drop-zone">
+      <label for="file-input" class="drop-zone" id="drop-zone">
         <p style="font-weight:600;margin-bottom:8px">Drop your.zip file here</p>
         <p style="color:var(--muted);font-size:14px" id="drop-text">or click to browse</p>
-        <input type="file" id="file-input" accept=".zip">
-      </div>
+      </label>
+      <input type="file" id="file-input" class="sr-only" accept=".zip,application/zip,application/x-zip-compressed">
       <input type="text" id="site-name" placeholder="Site name (e.g. my-portfolio)" required>
       <div class="modal-actions">
         <button class="btn-secondary" onclick="closeUploadModal()">Cancel</button>
@@ -192,7 +192,7 @@
 
       if(!file)return msg.textContent='Please select a.zip file',msg.style.display='block',msg.style.color='#fca5a5'
       if(!name)return msg.textContent='Please enter a site name',msg.style.display='block',msg.style.color='#fca5a5'
-      if(!file.name.endsWith('.zip'))return msg.textContent='Only.zip files allowed',msg.style.display='block',msg.style.color='#fca5a5'
+      if(!file.name.toLowerCase().endsWith('.zip'))return msg.textContent='Only.zip files allowed',msg.style.display='block',msg.style.color='#fca5a5'
       if(file.size>100*1024*1024&&d.plan==='free')return msg.textContent='Free tier: 100MB max. Upgrade for 500MB',msg.style.display='block',msg.style.color='#fca5a5'
 
       btn.disabled=true
@@ -238,46 +238,33 @@
 
     window.logout=async()=>{await sb.auth.signOut(),location='login.html'}
 
-    const dz = $('drop-zone');
-    const fileInput = $('file-input');
+    const dz=$('drop-zone')
+    const fileInput=$('file-input')
 
-    // Mobile-friendly click handler
-    dz.addEventListener('click', (e) => {
-      e.preventDefault();
-      fileInput.click();
-    });
-
-    // Touch handler specifically for mobile
-    dz.addEventListener('touchend', (e) => {
-      e.preventDefault();
-      fileInput.click();
-    });
-
-    dz.ondragover = e => {
-      e.preventDefault();
-      dz.classList.add('dragover');
-    }
-    dz.ondragleave = () => dz.classList.remove('dragover');
-    dz.ondrop = e => {
-      e.preventDefault();
-      dz.classList.remove('dragover');
-      const file = e.dataTransfer.files[0];
+    dz.ondragover=e=>{e.preventDefault(),dz.classList.add('dragover')}
+    dz.ondragleave=()=>dz.classList.remove('dragover')
+    dz.ondrop=e=>{
+      e.preventDefault()
+      dz.classList.remove('dragover')
+      const file=e.dataTransfer.files[0]
       if(file){
-        fileInput.files = e.dataTransfer.files;
-        $('drop-text').textContent = `Selected: ${file.name}`;
-        if(!$('site-name').value) $('site-name').value = file.name.replace('.zip','').toLowerCase().replace(/[^a-z0-9-]/g,'-');
+        const dt=new DataTransfer()
+        dt.items.add(file)
+        fileInput.files=dt.files
+        $('drop-text').textContent=`Selected: ${file.name}`
+        if(!$('site-name').value)$('site-name').value=file.name.replace(/\.zip$/i,'').toLowerCase().replace(/[^a-z0-9-]/g,'-')
       }
     }
 
-    fileInput.onchange = e => {
-      const file = e.target.files[0];
+    fileInput.onchange=e=>{
+      const file=e.target.files[0]
       if(file){
-        $('drop-text').textContent = `Selected: ${file.name}`;
-        if(!$('site-name').value) $('site-name').value = file.name.replace('.zip','').toLowerCase().replace(/[^a-z0-9-]/g,'-');
+        $('drop-text').textContent=`Selected: ${file.name}`
+        if(!$('site-name').value)$('site-name').value=file.name.replace(/\.zip$/i,'').toLowerCase().replace(/[^a-z0-9-]/g,'-')
       }
     }
 
     init()
   </script>
 </body>
-      </html>
+</html>

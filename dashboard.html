@@ -77,7 +77,7 @@
       <button class="nav-item" onclick="openUploadModal()"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>New Site</button>
       <button class="nav-item" onclick="alert('My Sites coming soon')"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>My Sites</button>
       <button class="nav-item locked" id="analytics-btn" onclick="checkPremium('analytics')"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>Analytics</button>
-      <button class="nav-item" onclick="location='settings.html'"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>Settings</button>
+      <button class="nav-item" onclick="location='settings.html'"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>Settings</button>
     </nav>
     <div class="sidebar-footer">
       <a href="settings.html" class="upgrade-btn" id="upgrade-btn">💎 Upgrade to Pro</a>
@@ -91,7 +91,7 @@
   <main class="main">
     <div class="header">
       <div><h1>Welcome back!</h1><p style="color:var(--muted);margin-top:4px" id="welcome-sub">You've used 0/3 uploads today</p></div>
-      <button class="btn-primary" onclick="openUploadModal()"><svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>Deploy new site</button>
+      <button class="btn-primary" onclick="openUploadModal()" id="deploy-btn"><svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>Deploy new site</button>
     </div>
     <div class="stats">
       <div class="stat-card"><div class="stat-label">Uploads Today</div><div class="stat-value" id="uploads-today">0 / 3</div><div class="progress-bar"><div class="progress-fill" id="upload-progress" style="width:0%"></div></div></div>
@@ -107,7 +107,7 @@
       <h3>Deploy new site</h3>
       <div class="drop-zone" id="drop-zone" onclick="$('file-input').click()">
         <p style="font-weight:600;margin-bottom:8px">Drop your.zip file here</p>
-        <p style="color:var(--muted);font-size:14px">or click to browse</p>
+        <p style="color:var(--muted);font-size:14px" id="drop-text">or click to browse</p>
         <input type="file" id="file-input" accept=".zip">
       </div>
       <input type="text" id="site-name" placeholder="Site name (e.g. my-portfolio)" required>
@@ -120,25 +120,145 @@
   </div>
 
   <footer>
-  © 2026 Dropsite. Built by <a href="#">Wild Lirt Studio</a> · 
-  <a href="terms.html">Terms</a> · 
+  © 2026 Dropsite. Built by <a href="#">Wild Lirt Studio</a> ·
+  <a href="terms.html">Terms</a> ·
   <a href="privacy.html">Privacy</a>
 </footer>
 
   <script type="module">
     import{createClient}from'https://esm.sh/@supabase/supabase-js@2'
-    const sb=createClient('https://https://pnewgkczavhqvidhokww.supabase.co.supabase.co','sb_publishable_f69tFC-HWTcr87q2Eq4Qiw_smjFVKno')
+    const sb=createClient('https://pnewgkczavhqvidhokww.supabase.co','sb_publishable_f69tFC-HWTcr87q2Eq4Qiw_smjFVKno')
     let u,d,$=s=>document.getElementById(s)
-    const init=async()=>{const{data:{user}}=await sb.auth.getUser();if(!user)return location='login.html';u=user,$('user-email').textContent=user.email,$('avatar').textContent=user.email[0].toUpperCase();const{data}=await sb.from('users').select('*').eq('id',user.id).single();d=data||await sb.from('users').insert({id:user.id,email:user.email,plan:'free',uploads_today:0,uploads_month:0}).select().single().then(r=>r.data);if(d.pro_expires_at&&new Date(d.pro_expires_at)<new Date())await sb.from('users').update({plan:'free'}).eq('id',u.id),d.plan='free';updateUI(),loadSites()}
-    const updateUI=()=>{const p=d.plan==='premium',ul=p?'∞':'3',sl=p?'∞':'15';$('plan-badge').textContent=p?'PRO':'FREE',$('plan-badge').classList.toggle('pro',p),$('uploads-today').textContent=`${d.uploads_today} / ${ul}`,$('total-sites').textContent=`${d.uploads_month} / ${sl}`,$('welcome-sub').textContent=`You've used ${d.uploads_today}/${ul} uploads today`,$('upload-progress').style.width=p?'100%':d.uploads_today/3*100+'%';if(p)$('upgrade-btn').style.display='none',$('analytics-btn').classList.remove('locked')}
-    const loadSites=async()=>{const{data}=await sb.from('sites').select('*').eq('user_id',u.id).order('created_at',{ascending:false});$('sites-grid').innerHTML=data?.length?data.map(s=>`<div class="site-card"><div><div class="site-name">${s.name}</div><a href="${s.url}" target="_blank" class="site-url">${s.url}</a></div><div class="site-stats"><span>📊 ${s.views||0} views</span><span>📅 ${new Date(s.created_at).toLocaleDateString()}</span></div><div class="site-actions"><a href="${s.url}" target="_blank" class="btn-small">Visit</a><button class="btn-small" onclick="checkPremium('editor')">Edit</button></div></div>`).join(''):'<div class="empty"><h3>No sites yet</h3><p>Deploy your first site to get started</p></div>';$('total-views').textContent=data?.reduce((a,s)=>a+(s.views||0),0)||0}
+
+    const init=async()=>{
+      const{data:{session}}=await sb.auth.getSession()
+      if(!session)return location='login.html'
+      u=session.user
+      $('user-email').textContent=u.email
+      $('avatar').textContent=u.email[0].toUpperCase()
+
+      const{data:userData}=await sb.from('users').select('*').eq('id',u.id).single()
+      d=userData||await sb.from('users').insert({id:u.id,email:u.email,plan:'free',uploads_today:0,uploads_month:0}).select().single().then(r=>r.data)
+
+      if(d.pro_expires_at&&new Date(d.pro_expires_at)<new Date()){
+        await sb.from('users').update({plan:'free'}).eq('id',u.id)
+        d.plan='free'
+      }
+      updateUI()
+      loadSites()
+    }
+
+    const updateUI=()=>{
+      const p=d.plan==='premium',ul=p?'∞':'3',sl=p?'∞':'15'
+      $('plan-badge').textContent=p?'PRO':'FREE'
+      $('plan-badge').classList.toggle('pro',p)
+      $('uploads-today').textContent=`${d.uploads_today} / ${ul}`
+      $('total-sites').textContent=`${d.uploads_month} / ${sl}`
+      $('welcome-sub').textContent=`You've used ${d.uploads_today}/${ul} uploads today`
+      $('upload-progress').style.width=p?'100%':d.uploads_today/3*100+'%'
+      if(p)$('upgrade-btn').style.display='none',$('analytics-btn').classList.remove('locked')
+
+      const limitReached=d.plan==='free'&&d.uploads_today>=3
+      $('deploy-btn').disabled=limitReached
+      if(limitReached)$('deploy-btn').textContent='Daily limit reached'
+    }
+
+    const loadSites=async()=>{
+      const{data}=await sb.from('sites').select('*').eq('user_id',u.id).order('created_at',{ascending:false})
+      $('sites-grid').innerHTML=data?.length?data.map(s=>`<div class="site-card"><div><div class="site-name">${s.name}</div><a href="${s.url}" target="_blank" class="site-url">${s.url}</a></div><div class="site-stats"><span>📊 ${s.views||0} views</span><span>📅 ${new Date(s.created_at).toLocaleDateString()}</span></div><div class="site-actions"><a href="${s.url}" target="_blank" class="btn-small">Visit</a><button class="btn-small" onclick="checkPremium('editor')">Edit</button></div></div>`).join(''):'<div class="empty"><h3>No sites yet</h3><p>Deploy your first site to get started</p></div>'
+      $('total-views').textContent=data?.reduce((a,s)=>a+(s.views||0),0)||0
+    }
+
     window.toggleSidebar=()=>$('sidebar').classList.toggle('open')
     window.checkPremium=f=>{if(d.plan!=='premium')return alert('Premium only. Upgrade in Settings →'),location='settings.html';alert(f+' coming soon!')}
-    window.openUploadModal=()=>{if(!d)return;if(d.plan==='free'&&d.uploads_today>=3)return alert('Free tier limit reached! Upgrade to Premium.'),location='settings.html';$('upload-modal').classList.add('show')}
-    window.closeUploadModal=()=>{$('upload-modal').classList.remove('show'),$('file-input').value='',$('site-name').value='',$('upload-msg').style.display='none'}
-    window.uploadSite=async()=>{const n=$('site-name').value.trim(),m=$('upload-msg'),b=$('upload-btn');if(!$('file-input').files[0])return m.textContent='Please select a.zip file',m.style.display='block',m.style.color='#fca5a5';if(!n)return m.textContent='Please enter a site name',m.style.display='block',m.style.color='#fca5a5';b.disabled=true,b.textContent='Deploying...',m.textContent='Uploading...',m.style.display='block',m.style.color='#86efac';setTimeout(()=>{m.textContent='Deployed! (Backend upload not connected yet)',b.disabled=false,b.textContent='Deploy',setTimeout(closeUploadModal,2000)},1500)}
+    window.openUploadModal=()=>{
+      if(!d)return
+      if(d.plan==='free'&&d.uploads_today>=3)return alert('Free tier limit reached! Upgrade to Premium.'),location='settings.html'
+      $('upload-modal').classList.add('show')
+    }
+    window.closeUploadModal=()=>{
+      $('upload-modal').classList.remove('show')
+      $('file-input').value=''
+      $('site-name').value=''
+      $('upload-msg').style.display='none'
+      $('drop-text').textContent='or click to browse'
+    }
+
+    window.uploadSite=async()=>{
+      const file=$('file-input').files[0]
+      const name=$('site-name').value.trim().toLowerCase().replace(/[^a-z0-9-]/g,'-')
+      const msg=$('upload-msg')
+      const btn=$('upload-btn')
+
+      if(!file)return msg.textContent='Please select a.zip file',msg.style.display='block',msg.style.color='#fca5a5'
+      if(!name)return msg.textContent='Please enter a site name',msg.style.display='block',msg.style.color='#fca5a5'
+      if(!file.name.endsWith('.zip'))return msg.textContent='Only.zip files allowed',msg.style.display='block',msg.style.color='#fca5a5'
+      if(file.size>100*1024*1024&&d.plan==='free')return msg.textContent='Free tier: 100MB max. Upgrade for 500MB',msg.style.display='block',msg.style.color='#fca5a5'
+
+      btn.disabled=true
+      btn.textContent='Uploading...'
+      msg.textContent='Uploading zip...',msg.style.display='block',msg.style.color='#86efac'
+
+      try {
+        const filePath=`${u.id}/${name}/${Date.now()}.zip`
+        const{error:uploadErr}=await sb.storage.from('sites').upload(filePath,file,{upsert:true})
+        if(uploadErr)throw uploadErr
+
+        msg.textContent='Deploying...'
+        const url=`https://dropsite-drab.vercel.app/site/${u.id}/${name}`
+
+        await sb.from('sites').insert({
+          user_id:u.id,
+          name,
+          url,
+          storage_path:filePath,
+          views:0
+        })
+
+        await sb.from('users').update({
+          uploads_today:d.uploads_today+1,
+          uploads_month:d.uploads_month+1
+        }).eq('id',u.id)
+
+        msg.textContent='Deployed! Note: Unzip service not connected yet.'
+        msg.style.color='#86efac'
+
+        setTimeout(()=>{
+          closeUploadModal()
+          init()
+        },2000)
+
+      } catch(e) {
+        msg.textContent='Error: '+e.message
+        msg.style.color='#fca5a5'
+        btn.disabled=false
+        btn.textContent='Deploy'
+      }
+    }
+
     window.logout=async()=>{await sb.auth.signOut(),location='index.html'}
-    const dz=$('drop-zone');dz.ondragover=e=>{e.preventDefault(),dz.classList.add('dragover')};dz.ondragleave=()=>dz.classList.remove('dragover');dz.ondrop=e=>{e.preventDefault(),dz.classList.remove('dragover'),$('file-input').files=e.dataTransfer.files}
+
+    const dz=$('drop-zone')
+    dz.ondragover=e=>{e.preventDefault(),dz.classList.add('dragover')}
+    dz.ondragleave=()=>dz.classList.remove('dragover')
+    dz.ondrop=e=>{
+      e.preventDefault()
+      dz.classList.remove('dragover')
+      const file=e.dataTransfer.files[0]
+      if(file){
+        $('file-input').files=e.dataTransfer.files
+        $('drop-text').textContent=`Selected: ${file.name}`
+        if(!$('site-name').value)$('site-name').value=file.name.replace('.zip','').toLowerCase().replace(/[^a-z0-9-]/g,'-')
+      }
+    }
+    $('file-input').onchange=e=>{
+      const file=e.target.files[0]
+      if(file){
+        $('drop-text').textContent=`Selected: ${file.name}`
+        if(!$('site-name').value)$('site-name').value=file.name.replace('.zip','').toLowerCase().replace(/[^a-z0-9-]/g,'-')
+      }
+    }
+
     init()
   </script>
 </body>

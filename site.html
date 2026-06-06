@@ -11,7 +11,7 @@
     <script>
         const SUPABASE_URL = 'https://pnewgkczavhqvidhokww.supabase.co'
         const SUPABASE_ANON_KEY = 'sb_publishable_f69tFC-HWTcr87q2Eq4Qiw_smjFVKno'
-        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+        const client = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
         
         async function loadSite() {
             const path = window.location.pathname.split('/').filter(Boolean)
@@ -23,12 +23,12 @@
                 return
             }
             
-            const { data, error } = await supabase
-               .from('sites')
-               .select('html_content, title')
-               .eq('username', username)
-               .eq('slug', slug)
-               .single()
+            const { data, error } = await client
+              .from('sites')
+              .select('html_content, title')
+              .eq('username', username)
+              .eq('slug', slug)
+              .single()
             
             if (error ||!data) {
                 document.body.innerHTML = '<h1>404 - Site not found</h1>'

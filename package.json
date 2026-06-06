@@ -1,0 +1,7 @@
+{
+  "name": "dropsite",
+  "dependencies": {
+    "jszip": "^3.10.1",
+    "@supabase/supabase-js": "^2.39.0"
+  }
+}
